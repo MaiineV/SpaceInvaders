@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Controller
 {
-    private Model _model;
+    private readonly Model _model;
     private Vector3 _dir;
 
     public Controller(Model model)
@@ -15,6 +13,10 @@ public class Controller
     public void OnUpdate()
     {
         MovementInputs();
+        ShootInput();
+        
+        //Testing Zone
+        TestingInputs();
     }
 
     private void MovementInputs()
@@ -31,9 +33,17 @@ public class Controller
 
     private void ShootInput()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && _model.WeaponManager.CanShoot())
         {
-            
+            _model.WeaponManager.Shoot();
+        }
+    }
+
+    private void TestingInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            _model.WeaponManager.AddWeapon(_model.testingWepaon);
         }
     }
 }
