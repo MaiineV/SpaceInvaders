@@ -11,6 +11,7 @@ public class BaseWeapon : Weapon
         var actualBullet = _bulletPool.GetObject();
         
         actualBullet.OnReset();
+        actualBullet.SetDamage(_soWeapon.dmg);
         actualBullet.SetPos(_shootingPoint.position);
         actualBullet.SetDir(_shootingPoint.forward);
         actualBullet.SetSpeed(10);

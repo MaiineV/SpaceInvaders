@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7523171936109733546}
   - component: {fileID: 3619872476741344459}
   - component: {fileID: 1828675483425019279}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 25, y: 15, z: 22}
+  m_Size: {x: 8, y: 15, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3071188296292831072
 PrefabInstance:

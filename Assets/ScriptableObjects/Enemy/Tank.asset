@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Tank
   m_EditorClassIdentifier: 
   life: 15
+  speed: 5
   dmg: 15
   attackSpeed: 0.5
   colliderSize: {x: 15, y: 15, z: 11}

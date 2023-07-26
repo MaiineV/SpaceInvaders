@@ -1,9 +1,13 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, ILife
 {
     private EnemySpawner _spawner;
 
+    private readonly List<IMovement> _movements = new List<IMovement>();
+    private IMovement _actualMovement;
     [SerializeField] private GameObject[] _meshRenderers;
     [SerializeField] private BoxCollider _collider;
     private Vector3 _baseColliderSize;
@@ -18,10 +22,22 @@ public class Enemy : MonoBehaviour, ILife
     {
         _spawner = spawner;
         _baseColliderSize = _collider.size;
+        
+        _movements.Add(new LineMove(transform));
+        _movements.Add(new SinuousMove(transform));
     }
+
+    private void Update()
+    {
+        _actualMovement.Movement();
+    }
+
+    #region Builder
 
     public void OnReset()
     {
+        _actualMovement = _movements[0];
+        
         foreach (var meshRenderer in _meshRenderers)
         {
             meshRenderer.SetActive(false);
@@ -36,9 +52,19 @@ public class Enemy : MonoBehaviour, ILife
         _isDeath = false;
     }
 
+    public void SetMovement(int moveType)
+    {
+        _actualMovement = _movements[0];
+    }
+
     public void SetMesh(int mesh)
     {
         _meshRenderers[mesh].SetActive(true);
+    }
+
+    public void SetSpeed(float speed)
+    {
+        _actualMovement.Speed = speed;
     }
 
     public void SetLife(float life)
@@ -61,10 +87,15 @@ public class Enemy : MonoBehaviour, ILife
         _collider.size = size;
     }
 
+    #endregion
+  
+
     #region Life Interface
 
     public void Damage(float dmg)
     {
+        Debug.Log(2);
+        
         _life -= dmg;
 
         if (_life > 0) return;

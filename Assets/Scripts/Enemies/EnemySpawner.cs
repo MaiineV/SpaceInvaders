@@ -78,15 +78,17 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(EnemyType value)
     {
         var actualEnemy = _enemyPool.GetObject();
-        actualEnemy.OnReset();
 
-        actualEnemy.transform.position = _spawnsPoint[Random.Range(0, _spawnsPoint.Count)].position;
+        var spawnIndex = Random.Range(0, _spawnsPoint.Count);
+        actualEnemy.transform.position = _spawnsPoint[spawnIndex].position;
+        actualEnemy.transform.rotation = _spawnsPoint[spawnIndex].rotation;
 
         var index = (int)value;
 
         actualEnemy.SetMesh(index);
         actualEnemy.SetLife(_enemiesType[index].life);
         actualEnemy.SetDamage(_enemiesType[index].dmg);
+        actualEnemy.SetSpeed(_enemiesType[index].speed);
 
 
         if (value == EnemyType.Asteroid) return;

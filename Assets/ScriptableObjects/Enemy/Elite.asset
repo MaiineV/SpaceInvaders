@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Elite
   m_EditorClassIdentifier: 
   life: 8
+  speed: 5
   dmg: 15
   attackSpeed: 0.1
   colliderSize: {x: 25, y: 15, z: 22}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Asteroid
   m_EditorClassIdentifier: 
   life: 3
+  speed: 5
   dmg: 5
   attackSpeed: 0
   colliderSize: {x: 8, y: 15, z: 6}

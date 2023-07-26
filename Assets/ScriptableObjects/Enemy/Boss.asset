@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   life: 30
+  speed: 5
   dmg: 15
   attackSpeed: 0.05
   colliderSize: {x: 0, y: 0, z: 0}

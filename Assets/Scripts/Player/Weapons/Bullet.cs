@@ -10,13 +10,19 @@ public class Bullet : MonoBehaviour
     private float _timer;
     
     private float _speed = 0;
+    private float _dmg;
 
     private Vector3 _futurePos;
-    private RaycastHit[] _hit;
+    private Collider[] _colliders;
 
     public void Init(Weapon weapon)
     {
         _weapon = weapon;
+    }
+
+    public void SetDamage(float dmg)
+    {
+        _dmg = dmg;
     }
 
     public void SetSpeed(float speed)
@@ -36,13 +42,14 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        _futurePos = _transform.position += _transform.forward * (_speed * Time.deltaTime);
-        
-        if (Physics.CapsuleCastNonAlloc(_transform.position, _futurePos, 1, _transform.forward, _hit, LayerManager.EnemyMask) > 0)
+        _colliders = Physics.OverlapSphere(_transform.position, 1, LayerManager.EnemyMask);
+        if (_colliders.Length > 0)
         {
-            //TODO: Damage To Enemy
+            Debug.Log(3);
+            _colliders[0].gameObject.GetComponent<ILife>().Damage(_dmg);
             
             _weapon.ReturnBullet(this);
+            return;
         }
         
         _transform.position += _transform.forward * (_speed * Time.deltaTime);
