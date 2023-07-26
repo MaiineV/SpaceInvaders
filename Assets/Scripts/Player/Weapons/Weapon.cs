@@ -48,6 +48,8 @@ public abstract class Weapon : MonoBehaviour, IWeapon
 
     #endregion
 
+    #region Pool&Factory
+
     private Bullet BulletFactory()
     {
         var resourceLoad = Resources.Load(_soWeapon.bulletPrefabName, typeof(GameObject)) as GameObject;
@@ -68,4 +70,7 @@ public abstract class Weapon : MonoBehaviour, IWeapon
     {
         _bulletPool.ReturnObject(bullet);
     }
+
+    #endregion
+
 }
