@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BaseEnemyBack
+  m_Name: Player
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 4
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: b5ae5e39d818246439657dd4a8ae776c, type: 3}
+        m_Texture: {fileID: 2800000, guid: a55bdc89d17e9854e85b35345d1baa3b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
-        m_Texture: {fileID: 2800000, guid: 964833f064549774ca1890f2216c05aa, type: 3}
+        m_Texture: {fileID: 2800000, guid: f41dca26c72cbad44b7a3dd7562ac604, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 783c61b5e03b62b498ebcf5318a64306, type: 3}
+        m_Texture: {fileID: 2800000, guid: 10c509f5efccdbc49ac46637838c779a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -61,9 +61,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.657
+    - _Glossiness: 0.623
     - _GlossyReflections: 1
-    - _Metallic: 0.757
+    - _Metallic: 0.474
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
