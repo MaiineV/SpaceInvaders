@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     
     private EnemySpawner _enemySpawner;
 
-    void Awake()
+    private void Awake()
     {
         if (instance)
         {
@@ -31,6 +31,6 @@ public class GameManager : MonoBehaviour
 
     public void OnAllEnemiesDeath()
     {
-        
+        ScreenManager.Instance.Push(Screens.WinScree);
     }
 }

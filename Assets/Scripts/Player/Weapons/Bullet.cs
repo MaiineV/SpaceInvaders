@@ -45,7 +45,6 @@ public class Bullet : MonoBehaviour
         _colliders = Physics.OverlapSphere(_transform.position, 1, LayerManager.EnemyMask);
         if (_colliders.Length > 0)
         {
-            Debug.Log(3);
             _colliders[0].gameObject.GetComponent<ILife>().Damage(_dmg);
             
             _weapon.ReturnBullet(this);
@@ -74,5 +73,13 @@ public class Bullet : MonoBehaviour
     public static void ReturnBullet(Bullet bullet)
     {
         bullet.gameObject.SetActive(false);
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer != 3) return;
+        
+        other.gameObject.GetComponent<IPlayerLife>().Damage(_dmg);
+        _weapon.ReturnBullet(this);
     }
 }

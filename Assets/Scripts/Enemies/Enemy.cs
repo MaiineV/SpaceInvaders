@@ -12,9 +12,9 @@ public class Enemy : MonoBehaviour, ILife
     [SerializeField] private BoxCollider _collider;
     private Vector3 _baseColliderSize;
     
-    private float _life;
-    private float _dmg;
-    private float _attackSpeed;
+    [SerializeField] private float _life;
+    [SerializeField] private float _dmg;
+    [SerializeField] private float _attackSpeed;
 
     protected bool _isDeath = false;
 
@@ -54,7 +54,9 @@ public class Enemy : MonoBehaviour, ILife
 
     public void SetMovement(int moveType)
     {
-        _actualMovement = _movements[0];
+        if (_movements.Count <  moveType) return;
+        
+        _actualMovement = _movements[moveType];
     }
 
     public void SetMesh(int mesh)
@@ -64,7 +66,10 @@ public class Enemy : MonoBehaviour, ILife
 
     public void SetSpeed(float speed)
     {
-        _actualMovement.Speed = speed;
+        foreach (var movement in _movements)
+        {
+            movement.Speed = speed;
+        }
     }
 
     public void SetLife(float life)
@@ -94,8 +99,6 @@ public class Enemy : MonoBehaviour, ILife
 
     public void Damage(float dmg)
     {
-        Debug.Log(2);
-        
         _life -= dmg;
 
         if (_life > 0) return;
@@ -125,6 +128,15 @@ public class Enemy : MonoBehaviour, ILife
     }
 
     #endregion
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer != 3) return;
+        
+        other.gameObject.GetComponent<IPlayerLife>().Damage(_dmg);
+        _isDeath = true;
+        _spawner.ReturnEnemy(this);
+    }
 }
 
 public enum EnemyType

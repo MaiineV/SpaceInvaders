@@ -6,12 +6,10 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private SOEnemy[] _enemiesType;
-
     private LookUpTable<string, EnemyType> _enemyLevelTable;
     private ObjectPool<Enemy> _enemyPool;
 
-    private List<Transform> _spawnsPoint = new List<Transform>();
+    private readonly List<Transform> _spawnsPoint = new List<Transform>();
 
     private int _actualLevel;
     private int _maxEnemiesInLevel;
@@ -52,7 +50,25 @@ public class EnemySpawner : MonoBehaviour
         _levelStringBuilder.Append(",");
         _levelStringBuilder.Append(_maxEnemiesInLevel);
 
-        SpawnEnemy(_enemyLevelTable.GetResult(_levelStringBuilder.ToString()));
+        var enemyType = Random.Range(0, 4);
+
+        switch (enemyType)
+        {
+            case 0:
+                SpawnEnemy(EnemyType.Asteroid);
+                break;
+            case 1:
+                SpawnEnemy(EnemyType.Base);
+                break;
+            case 2:
+                SpawnEnemy(EnemyType.Tank);
+                break;
+            case 3:
+                SpawnEnemy(EnemyType.Elite);
+                break;
+
+        }
+
         _timer = 0;
     }
 
@@ -72,6 +88,8 @@ public class EnemySpawner : MonoBehaviour
             _maxEnemiesInLevel = newLevel.enemiesInLevel;
             _enemiesInLevel = _maxEnemiesInLevel;
             _isActive = true;
+            
+            EventManager.Trigger("EnemyCounter", _enemiesInLevel.ToString());
         }
     }
 
@@ -86,15 +104,7 @@ public class EnemySpawner : MonoBehaviour
         var index = (int)value;
 
         actualEnemy.SetMesh(index);
-        actualEnemy.SetLife(_enemiesType[index].life);
-        actualEnemy.SetDamage(_enemiesType[index].dmg);
-        actualEnemy.SetSpeed(_enemiesType[index].speed);
-
-
-        if (value == EnemyType.Asteroid) return;
-
-        actualEnemy.SetAttackSpeed(_enemiesType[index].attackSpeed);
-        actualEnemy.SetCollider(_enemiesType[index].colliderSize);
+        FlyWeight.EnemyDataGetter(actualEnemy, value);
     }
 
     #region Pool&Factory
@@ -118,6 +128,7 @@ public class EnemySpawner : MonoBehaviour
     {
         _enemyPool.ReturnObject(enemy);
         _enemiesInLevel--;
+        EventManager.Trigger("EnemyCounter", _enemiesInLevel);
 
         if (_enemiesInLevel > 0) return;
 
@@ -136,7 +147,7 @@ public class EnemySpawner : MonoBehaviour
         var level = int.Parse(split[0]);
         var enemyInLevel = int.Parse(split[1]);
 
-        var result = level + (Random.Range(0, enemyInLevel) / enemyInLevel) * 100;
+        var result = 50;
 
         if (result < 40)
         {

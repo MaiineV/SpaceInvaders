@@ -5,7 +5,7 @@ using UnityEngine;
 public class SinuousMove : IMovement
 {
     private float _currentDistance;
-    private const float _maxHorizontalDist = 15;
+    private const float _maxHorizontalDist = 60;
     private Vector3 _currentHorizontalDir;
     
     private float _speed;
@@ -29,7 +29,7 @@ public class SinuousMove : IMovement
             _currentHorizontalDir *= -1;
         }
         
-        var movementVector = (_transform.forward + _currentHorizontalDir) * _speed * Time.deltaTime;
+        var movementVector = (_transform.forward + _currentHorizontalDir * 0.5f) * _speed * Time.deltaTime;
 
         _currentDistance += movementVector.magnitude;
         _transform.position += movementVector;

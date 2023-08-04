@@ -40,9 +40,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6391524274497723277}
   - component: {fileID: 6391524274497723276}
+  - component: {fileID: 3320585431474527163}
   - component: {fileID: 6391524274497723279}
   - component: {fileID: 6391524274497723314}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,9 +78,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e62f756bae57c140bd13bb1241a96ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxLife: 10
   _velocity: 50
   _shootingPoint: {fileID: 6391524273727344765}
-  testingWepaon: {fileID: 0}
+  _initialWeapon: {fileID: 3320585431474527163}
+--- !u!114 &3320585431474527163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6391524274497723278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a40748424da504899da290e804cc2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soWeapon: {fileID: 11400000, guid: a4c91a7928bd11d4badd4a60123eb7f7, type: 2}
 --- !u!54 &6391524274497723279
 Rigidbody:
   m_ObjectHideFlags: 0

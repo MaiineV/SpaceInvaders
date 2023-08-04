@@ -6,7 +6,7 @@ public class BaseWeapon : Weapon
 {
     public override void Shoot()
     {
-        _actualMagazine--;
+        //_actualMagazine--;
         
         var actualBullet = _bulletPool.GetObject();
         
@@ -14,7 +14,7 @@ public class BaseWeapon : Weapon
         actualBullet.SetDamage(_soWeapon.dmg);
         actualBullet.SetPos(_shootingPoint.position);
         actualBullet.SetDir(_shootingPoint.forward);
-        actualBullet.SetSpeed(10);
+        actualBullet.SetSpeed(25);
     }
 
     public override WeaponsType Type()

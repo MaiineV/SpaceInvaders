@@ -16,7 +16,7 @@ public class Controller
         ShootInput();
         
         //Testing Zone
-        TestingInputs();
+        //TestingInputs();
     }
 
     private void MovementInputs()
@@ -39,11 +39,11 @@ public class Controller
         }
     }
 
-    private void TestingInputs()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            _model.WeaponManager.AddWeapon(_model.testingWepaon);
-        }
-    }
+    // private void TestingInputs()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.L))
+    //     {
+    //         _model.WeaponManager.AddWeapon(_model.testingWepaon);
+    //     }
+    // }
 }

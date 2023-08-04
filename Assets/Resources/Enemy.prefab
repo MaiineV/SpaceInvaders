@@ -54,6 +54,9 @@ MonoBehaviour:
   - {fileID: 7416337339581206505}
   - {fileID: 8935209921996100706}
   _collider: {fileID: 1828675483425019279}
+  _life: 0
+  _dmg: 0
+  _attackSpeed: 0
 --- !u!65 &1828675483425019279
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62,7 +65,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7523171936109733557}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 8, y: 15, z: 6}

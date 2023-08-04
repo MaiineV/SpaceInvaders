@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefabName: Bullet
   dmg: 5
-  shootTime: 1
+  shootTime: 0.3
   magazineSize: 10
